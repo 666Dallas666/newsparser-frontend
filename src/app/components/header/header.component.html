@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang = "en">
+<head>
+    <title>Bruh</title>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="content/favicon.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./header.component.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body style = "overflow-wrap:break-word">
+<nav class="navbar sticky-top navbar-expand-lg" style=" background-color:#FB929E; box-shadow: 1px 1px 6px">
+  <div class="container-fluid">
+  <button class="btn btn-default">
+    <img routerLink="main" (click)="maincomponent.cleartags()" class="img-fluid" src="assets/logo.svg" style="max-height:63px" >
+  </button>
+  <form style="max-height:32px !important;" class="paddingg">
+    <div class="input-group">
+      <div class="input-group-prepend" style="max-height:32px !important;">
+        <div class="input-group-text corners" style="background-color: #FFF6F6 !important; box-shadow:inset 1px 2px 6px;">
+        <img class="img-fluid" src="assets/searchicon.svg" height=24 width = 24>
+        </div>
+      </div>
+      <input type="text" (keyup.enter)="maincomponent.settag(tag)"  class="form-control corners" [(ngModel)]="tag" [ngModelOptions]="{ standalone: true }" placeholder="Поиск по тэгам" style=" background-color: #FFF6F6; max-height:32px !important; box-shadow:inset 0px 2px 6px !important; font-size:23px; font-weight:600 !important;font-family:'Roboto', sans-serif">
+    </div>
+  </form>
+  
+  <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
+    &#9776;
+  </button>
+  <div [ngbCollapse]="isMenuCollapsed" style= "justify-content: right !important" class=" collapse navbar-collapse" >
+    
+    <mat-form-field style="margin-left:16px; padding-bottom: -10px !important; color:white !important" appearance="legacy">
+
+      <mat-label>Сортировка по дате</mat-label>
+    
+      <mat-date-range-input [rangePicker]="picker" [formGroup]="dateRange">
+        <input matStartDate formControlName="start" (keyup.enter) = "dates()" placeholder="Start Date">
+        <input matEndDate formControlName="end" (keyup.enter) = "dates()" placeholder="End Date">
+      </mat-date-range-input>
+    
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    
+      <mat-date-range-picker  #datepickercolor color="primary" #picker></mat-date-range-picker>
+    
+    </mat-form-field>
+      <button class="btn btn-default marg">
+        <img (click)="dates()" class="img-fluid mg1" src="assets/dates.svg" style="max-height:35px; margin-top:8px; margin-left:16px " >
+      </button>
+      <img class="img-fluid usericon" src="assets/usericon.svg" style="height:50px; margin-right:16px; margin-left:16px; margin-top:8px" >
+    
+  </div>
+</div>
+</nav>
+<div class="frame" style="background-color: #FFDFDF; min-height: calc(100vh - 204px); padding: 40px">
+<router-outlet></router-outlet>
+</div>
+<div style="background-color: #FB929E; min-height:141px;">
+  <div class = "row" style="padding:0px !important; margin:0px !important">
+    <div class = "col background" style="padding:0px !important; background-repeat: no-repeat; min-height:141px">
+      <div class="footerbigtext mg" style="margin-left:40px; margin-top:23px">О НАС</div>
+      <div class="footertext mg" style="margin-left:40px;">Данный сайт является курсовой работой по РСЧИР и предназначается <br> для ознакомления пользователя с актуальными новостями. <br> Сайт создан студентом третьего курса
+РТУ МИРЭА,<br> Мамоновым Сергеем.</div>
+    </div>
+    <div class = "col wrapper background1" style="padding:0px !important; background-repeat: no-repeat; min-height:141px; background-position:right">
+      <div class="footerbigtext text-right mg" style="margin-right:202px; margin-top:23px">ПОЛЕЗНЫЕ ССЫЛКИ</div>
+      <div class="footertext text-right mg" style="margin-right:259px;"><a href="https://www.mirea.ru/">Сайт РТУ МИРЭА</a></div>
+      <div class="footertext text-right mg" style="margin-right:259px;"> <a href="https://github.com/666Dallas666">Проект на GitHub</a></div>
+      <div class="footertext text-right mg" style="margin-right:206px;">Сайт сделан при помощи 
+        <a href="https://angular.io/">Angular</a></div>
+      <div class="footertext text-right mg" style="margin-right:344px;">Почта для связи: mamonov.s.a@edu.mirea.ru</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

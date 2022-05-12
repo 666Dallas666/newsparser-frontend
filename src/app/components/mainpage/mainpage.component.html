@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang = "en">
+<head>
+    <title>Bruh</title>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="content/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./mainpage.component.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body style="background-color: #FFF6F6; width:100%; border-radius: 30px; box-shadow: 1px 1px 6px; min-height: 740px; padding-top: 40px; overflow-wrap:break-word ">
+    <div class="footertext1" style="margin-bottom:40px; padding-left:5%; padding-right:5%; display:grid; grid-template-columns: 50% 50%">
+    <div style="margin-left:auto; margin-right:auto; padding-left:5%; padding-right:5%">
+    <ng-container *ngIf="checktag(); else tagsTemp">
+        <div>
+        Показаны результаты по запросу: {{tag1}}
+        </div>
+    </ng-container>
+    </div>
+    <div style="margin-left:auto; margin-right:auto; padding-left:5%; padding-right:5%">
+    <ng-container *ngIf="checkdates() == 3">
+        Показаны новости от {{createdFrom}} до {{createdTo}}
+    </ng-container>
+    <ng-container *ngIf="checkdates() == 2">
+        Показаны новости до {{createdTo}}
+    </ng-container>
+    <ng-container *ngIf="checkdates() == 1">
+        Показаны новости от {{createdFrom}}
+    </ng-container>
+    <ng-container *ngIf="checkdates() == 0">
+        Дата не выбрана
+    </ng-container>
+    </div>
+    </div>
+<ng-template #tagsTemp>
+    <div style="text-align: center; line-height: 20px">
+    Доступные тэги: Политика, В мире, Экономика, Общество, Происшествия, Безопасность, Культура
+    </div>
+</ng-template>
+<div class="wrapper">   
+<ng-container *ngFor="let article of articles">
+<ng-container *ngIf="article.pictures[0].src != null && article.pictures[0].src != ''">
+<a href="{{article.contentLink}}" target="_blank" style="margin-left:auto; margin-right:auto; text-decoration: none;" >
+<button type="button" class="btn nowrap article" style=" height:auto; background-color: #AEDEFC; margin-bottom:60px; border-radius: 20px !important; display:block; padding:30px !important; max-width:700px; box-shadow: 0px 1px 6px;">
+    <img class="img-fluid" src="{{article.pictures[0].src}}" style="width:100%; margin-bottom:20px;" >
+    <div class="footerbigtext" style="width:100%; height:auto; margin-bottom: 20px; white-space: pre-line">
+        {{article.title}}
+    </div>
+    <div class="footertext" style="width:100%; height:auto; margin-bottom: 10px; white-space: pre-line; text-align:left; text-indent:10%">
+        Опубликовано: {{article.createdOn|date:"YYYY-MM-dd HH:mm"}}
+    </div>
+    <div class="row" style="padding:0px; margin:0px">
+    <div class="footertext" style="width:auto; height:auto; white-space: pre-line; text-align:left; margin-right:6px !important">
+        {{article.tag}}
+    </div>
+</div>
+</button>
+</a>
+</ng-container>
+</ng-container>
+</div>
+<div style="display:grid; grid-template-columns: 50% 50%">
+    <ng-container *ngIf="ctr != 0" >
+            <img class="img-fluid " (click)="prevPage()" src="assets/back.svg"  style="height:80px; margin-left:auto; margin-right:auto;margin-bottom:16px" >
+    </ng-container>
+    <ng-container *ngIf="ctr != pages">
+            <img class="img-fluid"  (click)="nextPage()" src="assets/next.svg" style="height:80px; margin-left:auto; margin-right:auto;margin-bottom:16px"  >
+    </ng-container>
+</div> 
+</body>
+</html>
