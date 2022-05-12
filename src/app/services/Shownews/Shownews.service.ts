@@ -25,14 +25,14 @@ export class ShownewsService {
   token:string="";
   constructor(private http: HttpClient,private router: Router, private _location: Location) { }
   getnews(page:number = 0){
-     return this.http.get('https://newsparsrer-backend.herokuapp.com/api/v1/news/', {params:{
+     return this.http.get('https://desolate-harbor-90368.herokuapp.com/https://newsparsrer-backend.herokuapp.com/api/v1/news/', {params:{
       page: page  
     }
     })
   }
   getnewsTags(page:number = 0, tag?:string, createdFrom?:string, createdTo?:string){
     if(tag && createdTo && createdFrom){
-      return this.http.get('https://newsparsrer-backend.herokuapp.com/api/v1/news/', {params:{
+      return this.http.get('https://desolate-harbor-90368.herokuapp.com/https://newsparsrer-backend.herokuapp.com/api/v1/news/', {params:{
         page: page,
         tag: tag,
         createdTo: createdTo,
@@ -41,7 +41,7 @@ export class ShownewsService {
         })
     }
     if(tag && createdFrom){
-      return this.http.get('https://newsparsrer-backend.herokuapp.com/api/v1/news/', {params:{
+      return this.http.get('https://desolate-harbor-90368.herokuapp.com/https://newsparsrer-backend.herokuapp.com/api/v1/news/', {params:{
         page: page,
         tag: tag,
         createdFrom: createdFrom
@@ -49,7 +49,7 @@ export class ShownewsService {
         })
     }
     if(tag && createdTo){
-      return this.http.get('https://newsparsrer-backend.herokuapp.com/api/v1/news/', {params:{
+      return this.http.get('https://desolate-harbor-90368.herokuapp.com/https://newsparsrer-backend.herokuapp.com/api/v1/news/', {params:{
         page: page,
         tag: tag,
         createdTo: createdTo
@@ -57,7 +57,7 @@ export class ShownewsService {
         })
     }
     if(createdFrom && createdTo){
-      return this.http.get('https://newsparsrer-backend.herokuapp.com/api/v1/news/', {params:{
+      return this.http.get('https://desolate-harbor-90368.herokuapp.com/https://newsparsrer-backend.herokuapp.com/api/v1/news/', {params:{
         page: page,
         createdFrom: createdFrom,
         createdTo: createdTo
@@ -65,27 +65,27 @@ export class ShownewsService {
         })
     }
     if(tag){
-    return this.http.get('https://newsparsrer-backend.herokuapp.com/api/v1/news/', {params:{
+    return this.http.get('https://desolate-harbor-90368.herokuapp.com/https://newsparsrer-backend.herokuapp.com/api/v1/news/', {params:{
      page: page,
      tag: tag
     }
     })
     }
     if(createdFrom){
-    return this.http.get('https://newsparsrer-backend.herokuapp.com/api/v1/news/', {params:{
+    return this.http.get('https://desolate-harbor-90368.herokuapp.com/https://newsparsrer-backend.herokuapp.com/api/v1/news/', {params:{
       page: page,
       createdFrom: createdFrom
      }
      })
     }
     if(createdTo){
-      return this.http.get('https://newsparsrer-backend.herokuapp.com/api/v1/news/', {params:{
+      return this.http.get('https://desolate-harbor-90368.herokuapp.com/https://newsparsrer-backend.herokuapp.com/api/v1/news/', {params:{
         page: page,
         createdTo: createdTo
        }
        })
     }
-    else return this.http.get('https://newsparsrer-backend.herokuapp.com/api/v1/news/',{params:{
+    else return this.http.get('https://desolate-harbor-90368.herokuapp.com/https://newsparsrer-backend.herokuapp.com/api/v1/news/',{params:{
       page:page
     }})
  }
