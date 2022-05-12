@@ -21,7 +21,7 @@ export class Article1{
   providedIn: 'root'
 })
 export class ShownewsService {
- url = 'http://localhost:8085';
+ url = 'https://newsparsrer-backend.herokuapp.com';
   token:string="";
   constructor(private http: HttpClient,private router: Router, private _location: Location) { }
   getnews(page:number = 0){
