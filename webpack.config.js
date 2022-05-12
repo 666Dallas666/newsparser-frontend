@@ -17,7 +17,6 @@ module.exports = {
     /** Same as proxy.conf.json or proxy.conf.js */
         ' /api': {
           target: 'https://newsparsrer-backend.herokuapp.com/',
-          changeOrigin:true,
           secure:false
         }
       },
